@@ -3,11 +3,9 @@ package com.msh.mshapi.controller;
 import com.msh.mshapi.entity.User;
 import com.msh.mshapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,10 +16,17 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/users")
+    @GetMapping("/allusers")
     @ResponseBody
-    public List<User> getAllEmployees() {
+    public List<User> getAllUsers() {
         return userService.allUsers();
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<User> getEmployeeById(@PathVariable(value = "id") String id) {
+        User user = userService.getUser(id);
+        return ResponseEntity.ok().body(user);
+    }
+
 
 }
