@@ -1,6 +1,7 @@
 package com.msh.mshapi.entity;
 
 import lombok.Data;
+import org.springframework.lang.NonNull;
 
 import javax.persistence.*;
 
@@ -9,25 +10,24 @@ import javax.persistence.*;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private String id;
+    private int id;
     @Column(name = "name")
     private String name;
     @Column(name = "lastname")
     private String lastname;
     @Column(name = "phone")
-    private String phone;
+    private int phone;
     @Column(name = "address")
     private String address;
     @Column(name = "email")
     private String email;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -47,11 +47,11 @@ public class User {
         this.lastname = lastname;
     }
 
-    public String getPhone() {
+    public int getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhone(int phone) {
         this.phone = phone;
     }
 

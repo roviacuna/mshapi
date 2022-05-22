@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -25,6 +26,12 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<User> getEmployeeById(@PathVariable(value = "id") String id) {
         User user = userService.getUser(id);
+        return ResponseEntity.ok().body(user);
+    }
+
+    @PostMapping("/adduser")
+    public ResponseEntity<User> addUser(@RequestBody User user){
+        userService.saveUser(user);
         return ResponseEntity.ok().body(user);
     }
 

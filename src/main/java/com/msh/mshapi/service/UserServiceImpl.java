@@ -4,7 +4,7 @@ import com.msh.mshapi.dao.IUserDao;
 import com.msh.mshapi.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.List;
 
@@ -20,8 +20,8 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void saveUser(User user) {
-        iUserDao.save(user);
+    public User saveUser(User user) {
+       return iUserDao.save(user);
     }
 
     @Override
